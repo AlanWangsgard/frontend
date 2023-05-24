@@ -5,7 +5,8 @@ import Profile from './profile'
 import Image from './image'
 import Login from './login'
 import CreatePost from './createPost'
-import './css/style.css'
+import CreateUser from './createUser'
+import '../css/style.css'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: '/createPost',
     element: <CreatePost />
+  },
+  {
+    path: '/createUser',
+    element: <CreateUser />
   }
 ]);
 
