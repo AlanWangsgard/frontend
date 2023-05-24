@@ -1,8 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Hello from './hello'
+import Home from './home'
 import Profile from './profile'
 import Image from './image'
+import Login from './login'
+import CreatePost from './createPost'
+import './css/style.css'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,7 +13,7 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Hello />
+    element: <Home />
   },
   {
     path: '/profile',
@@ -19,6 +22,14 @@ const router = createBrowserRouter([
   {
     path: '/image',
     element: <Image />
+  },
+  {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/createPost',
+    element: <CreatePost />
   }
 ]);
 

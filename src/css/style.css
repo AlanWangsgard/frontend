@@ -1,0 +1,109 @@
+body{
+    background-color: slategray;
+    text-align: center;
+    margin: 0;
+    padding-top: 0;
+}
+
+body p{
+    margin: 0;
+}
+
+/* #root{
+    border: 3px black solid;
+    width: 300px;
+    margin: auto;
+    border-radius: 50%;
+    height: 300px;
+    box-shadow: 3px 3px 3px black;
+    background-color: darkorange;
+} */
+
+/* .hello, .profile{
+    margin-top: 125px;
+} */
+
+/* NAV */
+nav{
+    background-color: #56BED5;
+    padding-top: 10px;
+    width: 10%;
+    height: 100%;
+    float: left;
+    position: fixed;
+    border-right: 2px black solid;
+}
+
+nav ul{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+nav li{
+    display: block;
+    padding: 10px;
+}
+
+nav li a{
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+nav li a:hover{
+    color: darkblue;
+}
+
+/* Login */
+.loginForm input{
+margin: 10px;
+font-size: 17px;
+}
+
+.loginForm input:Focus{
+    outline: none;
+}
+
+.loginButton{
+    width: 100px;
+    height: 40px;
+    background-color: #56BED5;
+    border: none;
+}
+
+.loginButton:hover{
+    animation-name: swirl;
+    animation-duration: .5s;
+    border: 2px lightgreen solid;
+    color: lightgreen;
+
+}
+
+@keyframes swirl{
+    0% {border-color: #56BED5; color: black;}
+    100%{border-color: lightgreen; color: lightgreen;}
+}
+
+/* POSTS */
+
+.posts{
+    width: 90%;
+    margin-left: 10%;
+    padding-top: 40px;
+}
+.posts div{
+    /* border: 2px solid black; */
+    width: 50%;
+    margin: auto;
+    background-color: lightsteelblue;
+   
+}
+
+.postBody{
+    padding: 15px;
+}
+.postName{
+    padding-top: 10px;
+    padding-left: 25px;
+    text-align: left;
+}
