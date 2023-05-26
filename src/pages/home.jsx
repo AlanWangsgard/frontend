@@ -1,16 +1,42 @@
 import Nav from './nav'
-console.log(sessionStorage.getItem('userName'))
+// console.log(sessionStorage.getItem('userName'))
+
+
 export default function Home(){
+    async function getPosts(){
+        let data = await fetch('http://localhost:3000/posts/')
+        // console.log(await data.json())
+        let posts = await data.json()
+        posts.forEach(element => {
+            let div = document.createElement('div')
+            let h3 = document.createElement('h3')
+            let p = document.createElement('p')
+    
+            p.innerHTML = element.text 
+            h3.innerHTML = element.user
+            p.className = 'postText'
+            h3.className = 'postUser'
+            div.className ='postContainer'
+            div.appendChild(h3)
+            div.appendChild(p)
+            
+            if (element.image != 'n/a'){
+                let img = document.createElement('img')
+                img.setAttribute('src', element.image)
+                img.className = 'postImg'
+                div.appendChild(img)
+            }
+    
+            let container = document.querySelector('.posts')
+            container.appendChild(div)
+        });
+    }
+    getPosts()
+
     return (
     <>
     <Nav />
     <div className='posts'>
-        <div>
-            <p className='postName' >Steeve yeet</p>
-            
-            {/* <img src={file}></img> */}
-            <p className='postBody'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum pulvinar erat. Nulla dignissim imperdiet libero, sed porta nisl imperdiet eget. Phasellus sit amet molestie lorem, nec accumsan enim. Cras ac velit a nisi cursus vestibulum. Phasellus in velit ligula. Sed tincidunt ultricies sagittis. Nulla ullamcorper, nisi a lobortis fermentum, magna neque varius lorem, sit amet molestie diam tortor a odio. Morbi vel leo eget nunc cursus volutpat. Aliquam sed euismod dui, et accumsan erat. Etiam cursus eu nibh at congue. Duis dictum ligula sit amet maximus convallis.</p>
-        </div>
     </div>
     </>
     )

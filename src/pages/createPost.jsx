@@ -11,6 +11,7 @@ export default function CreatePost(){
         method: "POST",
         body: JSON.stringify({
             text: document.querySelector('.description').value,
+            user: sessionStorage.getItem('userName'),
             image: a
         }),
         headers: {
@@ -35,6 +36,8 @@ export default function CreatePost(){
     
           fileReader.readAsDataURL(imageFile);
           
+        }else{
+          createPost('n/a')
         }
       };
 

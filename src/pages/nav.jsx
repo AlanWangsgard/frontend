@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Nav(){
     function logout(){
         sessionStorage.clear()
@@ -10,11 +12,20 @@ export default function Nav(){
             <>
             <nav>
                 <ul className="navList" >
-                    <li>
+                    {/* <li>
                         <a href="/profile">{user}</a>
                     </li>
                     <li>
                         <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a onClick={logout}>Logout</a>
+                    </li> */}
+                    <li>
+                        <Link to={'/profile'}>Profile</Link>
+                    </li>
+                    <li>
+                        <Link to={'/'}>Home</Link>
                     </li>
                     <li>
                         <a onClick={logout}>Logout</a>
@@ -28,14 +39,15 @@ export default function Nav(){
         <>
         <nav>
             <ul className="navList" >
+              
                 <li>
-                    <a href="/">Home</a>
+                    <Link to={'/profile'}>Profile</Link>
                 </li>
                 <li>
-                    <a href="/profile">Profile</a>
+                    <Link to={'/'}>Home</Link>
                 </li>
                 <li>
-                    <a href="/login">Login</a>
+                <Link to={'/login'}>login</Link>
                 </li>
             </ul>
         </nav>
