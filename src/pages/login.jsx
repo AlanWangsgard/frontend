@@ -2,7 +2,7 @@ import Nav from './nav'
 
 async function login(){
     var username = document.querySelector(".username").value
-    var password = document.querySelector(".password").value
+    var password = document.querySelector(".loginPassord").value
     let url = 'http://localhost:3000/users/' + username
     let user = await fetch(url,{
         method: 'GET'
@@ -32,7 +32,7 @@ export default function Login(){
         <form className='loginForm'>
             <input type="text" className="username" placeholder="Username"/>
             <br></br>
-            <input type="password" className="password" placeholder='Password'/>
+            <input type="loginPassord" className="loginPassord" placeholder='Password'/>
             <br></br>
             <input type="button" className="loginButton" value="Login" onClick={login}/>
         </form>
