@@ -1,4 +1,5 @@
 import Nav from './nav'
+import { Link } from "react-router-dom"
 
 async function login(){
     var username = document.querySelector(".username").value
@@ -37,7 +38,8 @@ export default function Login(){
             <input type="button" className="loginButton" value="Login" onClick={login}/>
         </form>
         <p className='userError'></p>
-        <a href='http://localhost:5173/createUser'>No Account? Create one here!</a>
+        <Link to={'/createUser'}>No Account? Create one here!</Link>
+        {/* <a href='http://localhost:5173/createUser'>No Account? Create one here!</a> */}
         </>
     )
 }

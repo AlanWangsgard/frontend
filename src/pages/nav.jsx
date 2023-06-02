@@ -25,6 +25,9 @@ export default function Nav(){
                         <Link to={'/profile'}>Profile</Link>
                     </li>
                     <li>
+                    <Link to={'/createPost'}>Create Post</Link>
+                    </li>
+                    <li>
                         <Link to={'/'}>Home</Link>
                     </li>
                     <li>
@@ -40,9 +43,6 @@ export default function Nav(){
         <nav>
             <ul className="navList" >
               
-                <li>
-                    <Link to={'/profile'}>Profile</Link>
-                </li>
                 <li>
                     <Link to={'/'}>Home</Link>
                 </li>

@@ -1,3 +1,4 @@
+import Nav from "./nav"
 export default function CreatePost(){
     
 
@@ -5,12 +6,12 @@ export default function CreatePost(){
         // const $file = document.querySelector(".file")
 
     // console.log($file)
-        console.log(a)
-        console.log(document.querySelector('.description').value)
+        // console.log(a)
+        // console.log(document.querySelector('.description').value)
         fetch("http://localhost:3000/posts", {
         method: "POST",
         body: JSON.stringify({
-            text: document.querySelector('.description').value,
+            text: document.querySelector('.postDescription').value,
             user: sessionStorage.getItem('userName'),
             image: a
         }),
@@ -18,11 +19,12 @@ export default function CreatePost(){
     "Content-type": "application/json; charset=UTF-8"
   }
     })
+    location.href="http://localhost:5173/"
     }
       
     // $file.addEventListener("change", (event) => {
         function convert(){
-            const $file = document.querySelector(".file")
+            const $file = document.querySelector(".postFile")
         const selectedfile = $file.files;
         if (selectedfile.length > 0) {
           const [imageFile] = selectedfile;
@@ -43,10 +45,11 @@ export default function CreatePost(){
 
     return(
         <>
-        <form className="form" encType="multipart/form-data">
-        <textarea className="description"></textarea>
-        <input type="file" name="image" className="file"/>
-        <input className="button" onClick={convert} type="button"/>
+        <Nav />
+        <form className="postForm" encType="multipart/form-data">
+        <textarea className="postDescription" rows="5"></textarea>
+        <input type="file" name="image" className="postFile"/>
+        <input className="postButton" onClick={convert} type="button" value="Create Post"/>
         </form>
         </>
     )
