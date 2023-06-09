@@ -6,6 +6,7 @@ import Image from './image'
 import Login from './login'
 import CreatePost from './createPost'
 import CreateUser from './createUser'
+import EditPost from './editPost'
 import '../css/style.css'
 import {
   createBrowserRouter,
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: '/createUser',
     element: <CreateUser />
+  },
+  {
+    path: '/editPost/:postId',
+    element: <EditPost />
   }
 ]);
 

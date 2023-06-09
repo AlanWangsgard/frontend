@@ -1,5 +1,5 @@
 import Nav from './nav'
-export default function Profile(){
+export  default function Profile(){
     async function getPosts(){
         
         let url = 'http://localhost:3000/posts/' + sessionStorage.getItem('userName')
@@ -21,9 +21,9 @@ export default function Profile(){
             div.className ='postContainer'
             edit.className = 'editPost'
             deletePost.className = 'deletePost'
-            // edit.innerHTML = 'Edit'
+            edit.innerHTML = 'Edit'
             deletePost.innerHTML = 'Delete'
-            // edit.onclick = () => editPost(element._id)
+            edit.onclick = () => editPost(element._id)
             deletePost.onclick = () => trashPost(element._id)
            
             div.appendChild(h3)
@@ -36,29 +36,33 @@ export default function Profile(){
                 div.appendChild(img)
             }
     
-            // div.appendChild(edit)
+            div.appendChild(edit)
             div.appendChild(deletePost)
             let container = document.querySelector('.posts')
             container.appendChild(div)
         });
+        
     }
 
-    // function editPost(id){
-    //     console.log(a)
-    // }
+    function editPost(id){
+        location.href="http://localhost:5173/editPost/" + id
+    }
 
     function trashPost(id){
         let result = fetch('http://localhost:3000/posts/' + id, {method: 'DELETE'})
         location.reload()
     }
 
-    getPosts()
-
+getPosts()
+//    console.log(posts)
+  
 
     const user = sessionStorage.getItem('userName')
     if (!user){
         location.href = "http://localhost:5173/"
     }
+
+
     return (
     <>
     <Nav />

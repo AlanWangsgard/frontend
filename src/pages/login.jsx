@@ -30,6 +30,8 @@ export default function Login(){
     return(
         <>
         <Nav />
+        <div className='loginDiv'>
+        
         <form className='loginForm'>
             <input type="text" className="username" placeholder="Username"/>
             <br></br>
@@ -40,6 +42,7 @@ export default function Login(){
         <p className='userError'></p>
         <Link to={'/createUser'}>No Account? Create one here!</Link>
         {/* <a href='http://localhost:5173/createUser'>No Account? Create one here!</a> */}
+        </div>
         </>
     )
 }
