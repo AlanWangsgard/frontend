@@ -340,3 +340,9 @@ margin-left: auto;
     color: yellow;
     border: 2px solid yellow;
 }
+
+/* editProfile */
+.updateUserForm{
+    width: 85%;
+    margin-left: 15%;
+}

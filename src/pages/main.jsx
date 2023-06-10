@@ -7,6 +7,7 @@ import Login from './login'
 import CreatePost from './createPost'
 import CreateUser from './createUser'
 import EditPost from './editPost'
+import EditUser from './editProfile'
 import '../css/style.css'
 import {
   createBrowserRouter,
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: '/editPost/:postId',
     element: <EditPost />
+  },
+  {
+    path: '/editUser/:userName',
+    element: <EditUser />
   }
 ]);
 

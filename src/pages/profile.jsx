@@ -1,11 +1,17 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Nav from './nav'
+
 export  default function Profile(){
+    // const [data, setData] = useState()
+
     async function getPosts(){
         
         let url = 'http://localhost:3000/posts/' + sessionStorage.getItem('userName')
         let data = await fetch(url)
         // console.log(await data.json())
         let posts = await data.json()
+
         
         posts.forEach(element => {
             let div = document.createElement('div')
@@ -55,13 +61,22 @@ export  default function Profile(){
 
 getPosts()
 //    console.log(posts)
-  
+    // fetch(url).then(res => res.json()).then(setData)
+
+    // let url = 'http://localhost:3000/posts/' + sessionStorage.getItem('userName')
+    // useEffect(() => {
+    //     setData([])
+    
+    // fetch(url).then(res => res.json()).then(setData)
+    // }, [url])
 
     const user = sessionStorage.getItem('userName')
     if (!user){
         location.href = "http://localhost:5173/"
     }
 
+    // console.log(data)
+    // data.map(<>{data.text}</>)
 
     return (
     <>
@@ -70,6 +85,7 @@ getPosts()
     <h1 className='profileUser'>{user}</h1>
     <div className='posts'></div>
     </div>
+    <Link to={`/editUser/` + user}>Edit Account</Link>
     </>
     )
 }
