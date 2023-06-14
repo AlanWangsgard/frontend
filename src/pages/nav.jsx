@@ -22,13 +22,19 @@ export default function Nav(){
                         <a onClick={logout}>Logout</a>
                     </li> */}
                     <li>
-                        <Link to={'/profile'}>Profile</Link>
+                        <Link to={'/account'}>Profile</Link>
                     </li>
                     <li>
                     <Link to={'/createPost'}>Create Post</Link>
                     </li>
                     <li>
                         <Link to={'/'}>Home</Link>
+                    </li>
+                    <li>
+                        <Link to={'/fyp'}>Fyp</Link>
+                    </li>
+                    <li>
+                        <Link to={'/search'}>Search</Link>
                     </li>
                     <li>
                         <a onClick={logout}>Logout</a>
@@ -46,6 +52,9 @@ export default function Nav(){
                 <li>
                     <Link to={'/'}>Home</Link>
                 </li>
+                <li>
+                        <Link to={'/search'}>Search</Link>
+                    </li>
                 <li>
                 <Link to={'/login'}>login</Link>
                 </li>

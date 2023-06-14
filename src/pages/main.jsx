@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Home from './home'
-import Profile from './profile'
+import Account from './account'
 import Image from './image'
 import Login from './login'
 import CreatePost from './createPost'
@@ -9,6 +9,10 @@ import CreateUser from './createUser'
 import EditPost from './editPost'
 import EditUser from './editProfile'
 import '../css/style.css'
+import Profile from './profile'
+import Search from './search'
+import Fyp from './fyp'
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -19,8 +23,8 @@ const router = createBrowserRouter([
     element: <Home />
   },
   {
-    path: '/profile',
-    element: <Profile />
+    path: '/account',
+    element: <Account />
   },
   {
     path: '/image',
@@ -45,6 +49,18 @@ const router = createBrowserRouter([
   {
     path: '/editUser/:userName',
     element: <EditUser />
+  },
+  {
+    path: '/profile/:userName',
+    element: <Profile />
+  },
+  {
+    path: '/search',
+    element: <Search />
+  },
+  {
+    path: '/fyp',
+    element: <Fyp />
   }
 ]);
 

@@ -13,6 +13,7 @@ async function login(){
     var data = await user.json()
     if (data.password == password){
         sessionStorage.setItem('userName', data.userName)
+        sessionStorage.setItem('following', data.following)
         location.href="http://localhost:5173/"
     }else{
         element.style.display = 'block'

@@ -1,91 +1,87 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import Nav from './nav'
+import { useEffect, useState } from "react";
+import Nav from "./nav";
+import { useParams } from 'react-router-dom'
 
-export  default function Profile(){
-    // const [data, setData] = useState()
-
-    async function getPosts(){
-        
-        let url = 'http://localhost:3000/posts/' + sessionStorage.getItem('userName')
-        let data = await fetch(url)
-        // console.log(await data.json())
-        let posts = await data.json()
-
-        
-        posts.forEach(element => {
-            let div = document.createElement('div')
-            let h3 = document.createElement('h3')
-            let p = document.createElement('p')
-            let edit = document.createElement('button')
-            let deletePost = document.createElement('button')
+export default function Profile(){
+    const {userName} = useParams()
+    var fol = []
+    let list = sessionStorage.getItem('following')
+    if (list){
+        fol = list.split(',')
+    }
     
-            p.innerHTML = element.text 
-            h3.innerHTML = element.user
-            p.className = 'postText'
-            h3.className = 'postUser'
-            div.className ='postContainer'
-            edit.className = 'editPost'
-            deletePost.className = 'deletePost'
-            edit.innerHTML = 'Edit'
-            deletePost.innerHTML = 'Delete'
-            edit.onclick = () => editPost(element._id)
-            deletePost.onclick = () => trashPost(element._id)
-           
-            div.appendChild(h3)
-            div.appendChild(p)
+   
+    let url = 'http://localhost:3000/posts/' + userName
+    // getPost(postId)
+   
+        const [posts, setPosts] = useState([])
+
+        const fetchData = () => {
+            fetch(url)
+            .then(response => {
+                return response.json()
+            }).then(data => {
+                setPosts(data)
+            })
+        }
+    
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    function follow(a){
+        let list = []
+        if (fol.length > 0){
+        list = fol
+        }
+        list.push(a)
+        fetch('http://localhost:3000/users/follow/' + sessionStorage.getItem('userName'),{
+            method: 'PUT',
+            body: JSON.stringify({
+            follow: list,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+              }
+        })
+        sessionStorage.setItem('following', list)
+    }
+    function unFollow(a){
+        let list = []
+        if (fol.length > 0){
+        list = fol
+        }
+        list.pop(a)
+        fetch('http://localhost:3000/users/follow/' + sessionStorage.getItem('userName'),{
+            method: 'PUT',
+            body: JSON.stringify({
+            follow: list,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+              }
+        })
+        sessionStorage.setItem('following', list)
+        
+    }
+
+    return(
+        <>
+        <Nav />
+        <h1 className="profileUser">{userName}</h1>
+        {fol.includes(userName) && (
+            <button onClick={() =>unFollow(userName)}>Unfollow</button>
+        ) || (<button onClick={() => follow(userName)}>Follow</button>)}
+        
+        {}
+        {posts.length > 0 && (
             
-            if (element.image != 'n/a'){
-                let img = document.createElement('img')
-                img.setAttribute('src', element.image)
-                img.className = 'postImg'
-                div.appendChild(img)
-            }
-    
-            div.appendChild(edit)
-            div.appendChild(deletePost)
-            let container = document.querySelector('.posts')
-            container.appendChild(div)
-        });
-        
-    }
+            <div className="posts">
+            {posts.map((post, index) => <div key={index} className="postContainer"><h3 key={index} className="postUser">{post.user}</h3><p key={post.text} className="postText">{post.text}</p>{post.image != 'n/a' && (<img key={post.image} src={post.image}></img>)}</div>)}
+            </div>
+        )}
+        </>
 
-    function editPost(id){
-        location.href="http://localhost:5173/editPost/" + id
-    }
-
-    function trashPost(id){
-        let result = fetch('http://localhost:3000/posts/' + id, {method: 'DELETE'})
-        location.reload()
-    }
-
-getPosts()
-//    console.log(posts)
-    // fetch(url).then(res => res.json()).then(setData)
-
-    // let url = 'http://localhost:3000/posts/' + sessionStorage.getItem('userName')
-    // useEffect(() => {
-    //     setData([])
-    
-    // fetch(url).then(res => res.json()).then(setData)
-    // }, [url])
-
-    const user = sessionStorage.getItem('userName')
-    if (!user){
-        location.href = "http://localhost:5173/"
-    }
-
-    // console.log(data)
-    // data.map(<>{data.text}</>)
-
-    return (
-    <>
-    <Nav />
-    <div className='profileContent'>
-    <h1 className='profileUser'>{user}</h1>
-    <div className='posts'></div>
-    </div>
-    <Link to={`/editUser/` + user}>Edit Account</Link>
-    </>
     )
 }
