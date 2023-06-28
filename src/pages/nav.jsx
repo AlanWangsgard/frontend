@@ -12,15 +12,6 @@ export default function Nav(){
             <>
             <nav>
                 <ul className="navList" >
-                    {/* <li>
-                        <a href="/profile">{user}</a>
-                    </li>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        <a onClick={logout}>Logout</a>
-                    </li> */}
                     <li>
                         <Link to={'/account'}>Profile</Link>
                     </li>

@@ -60,23 +60,11 @@ export  default function Account(){
     }
 
 getPosts()
-//    console.log(posts)
-    // fetch(url).then(res => res.json()).then(setData)
-
-    // let url = 'http://localhost:3000/posts/' + sessionStorage.getItem('userName')
-    // useEffect(() => {
-    //     setData([])
-    
-    // fetch(url).then(res => res.json()).then(setData)
-    // }, [url])
 
     const user = sessionStorage.getItem('userName')
     if (!user){
         location.href = "http://localhost:5173/"
     }
-
-    // console.log(data)
-    // data.map(<>{data.text}</>)
 
     return (
     <>

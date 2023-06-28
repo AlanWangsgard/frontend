@@ -12,7 +12,6 @@ export default function Profile(){
     
    
     let url = 'http://localhost:3000/posts/' + userName
-    // getPost(postId)
    
         const [posts, setPosts] = useState([])
 
@@ -46,6 +45,8 @@ export default function Profile(){
               }
         })
         sessionStorage.setItem('following', list)
+        location.reload()
+
     }
     function unFollow(a){
         let list = []
@@ -63,6 +64,7 @@ export default function Profile(){
               }
         })
         sessionStorage.setItem('following', list)
+        location.reload()
         
     }
 
@@ -71,8 +73,8 @@ export default function Profile(){
         <Nav />
         <h1 className="profileUser">{userName}</h1>
         {fol.includes(userName) && (
-            <button onClick={() =>unFollow(userName)}>Unfollow</button>
-        ) || (<button onClick={() => follow(userName)}>Follow</button>)}
+            <button className="unfollow" onClick={() =>unFollow(userName)}>Unfollow</button>
+        ) || sessionStorage.getItem('userName') && (<button className="follow" onClick={() => follow(userName)}>Follow</button>)}
         
         {}
         {posts.length > 0 && (

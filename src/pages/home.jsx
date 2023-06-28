@@ -1,5 +1,4 @@
 import Nav from './nav'
-// console.log(sessionStorage.getItem('userName'))
 
 
 export default function Home(){

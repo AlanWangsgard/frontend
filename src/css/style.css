@@ -333,16 +333,66 @@ margin-left: auto;
     padding: 5px;
     margin-bottom: 10px;
     border: 2px solid crimson;
+    margin-left: 3px;
+}
+
+.editPost{
+    color: white;
+    border: none;
+    font-size: 15px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: orange;
+    border: 2px solid orange;
 }
 
 .deletePost:hover{
     background-color: red;
-    color: yellow;
     border: 2px solid yellow;
+}
+
+.editPost:hover{
+    border-color: yellow;
+}
+
+.unfollow{
+    color: white;
+    background-color: crimson;
+}
+
+.follow{
+    color: white;
+    background-color: lightgreen;
 }
 
 /* editProfile */
 .updateUserForm{
     width: 85%;
     margin-left: 15%;
+}
+
+/* search */
+.searchUser{
+    margin-top: 20px;
+}
+
+.searchUserButton:hover{
+    background-color: greenyellow;
+    border: 2px lightgreen solid;
+}
+
+.searchText{
+    display: none;
+    margin-top: 10px;
+}
+
+.userLink{
+    font-size: 20px;
+    font-family: "Comic Sans MS", "Comic Sans";
+    color: white;
+    text-decoration: none;
+}
+
+.userLink:hover{
+    color: yellow;
 }
