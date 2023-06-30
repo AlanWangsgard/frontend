@@ -10,12 +10,17 @@ export default function Home(){
             let div = document.createElement('div')
             let h3 = document.createElement('h3')
             let p = document.createElement('p')
+            let p2 = document.createElement('p')
     
             p.innerHTML = element.text 
             h3.innerHTML = element.user
+
+            p2.innerHTML = element.date
+
             p.className = 'postText'
             h3.className = 'postUser'
             div.className ='postContainer'
+            p2.className = 'postDate'
             div.appendChild(h3)
             div.appendChild(p)
             
@@ -25,6 +30,8 @@ export default function Home(){
                 img.className = 'postImg'
                 div.appendChild(img)
             }
+            div.appendChild(p2)
+
     
             let container = document.querySelector('.posts')
             container.appendChild(div)
