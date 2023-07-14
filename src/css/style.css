@@ -56,7 +56,8 @@ nav li a:hover{
 
 /* Login */
 .loginDiv{
-background-image: url(../images/ces.jpg);
+background-image: url(../images/photo-1594568284297-7c64464062b1.jpg);
+background-size: cover;
 width: 85%;
 margin-left: 15%;
 height: 600px;
@@ -200,10 +201,22 @@ font-size: 17px;
 }
 
 .userButton:hover{
-    animation: spin 2s;
+    animation: spin 1s;
     /* transform: rotate(180deg); */
     border: 2px lightgreen solid;
     color: lightgreen;
+}
+
+.errors{
+    width: 85%;
+    margin-left: auto;
+    color: white;
+}
+
+.errors p{
+    background-color: crimson;
+    max-width: 50%;
+    margin-inline: auto;
 }
 
 @keyframes spin {
@@ -326,6 +339,22 @@ margin: auto;
     color: steelblue;
 }
 
+.postErrorDiv{
+    width: 85%;
+    margin-left: 15%;
+    margin-top: 20px;
+}
+
+.postContentError{
+    color: white;
+  max-width: 40%;
+  background-color: crimson;
+  margin-inline: auto;
+  padding: 4px;
+  border-radius: 10px;
+  display: none;
+}
+
 /* profile */
 
 .profileUser{
@@ -405,4 +434,34 @@ margin-left: auto;
 
 .userLink:hover{
     color: yellow;
+}
+
+/* update user */
+.updateUserForm{
+    width: 85%;
+    margin-left: auto;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    font-size: 17px;
+}
+
+.userForm input:Focus{
+    outline: none;
+}
+
+.userName{
+    grid-column: 1;
+    grid-row: 1;
+    width: 70%;
+    margin-left: auto;
+}
+
+.userPassword{
+    grid-column: 2;
+    grid-row: 1;
+    width: 70%;
+    margin-right: auto;
 }

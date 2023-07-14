@@ -21,8 +21,18 @@ async function updatePost(userName){
          
         
     })
-    // location.href ="http://localhost:5173/profile"
-}
+    if(data.status == 400){
+    let resjson = data.json()
+    let errors = (await resjson)
+    let errorsDiv = document.querySelector('.errors')
+    errorsDiv.innerHTML = ''
+    if (errors.errors){
+    errors.errors.forEach(element => {
+        let p = document.createElement('p')
+        p.innerHTML = element.msg
+        errorsDiv.append(p)
+    location.href ="http://localhost:5173/profile"
+    })}}}
 
 
 async function getUser(userName){
@@ -73,8 +83,10 @@ async function getUser(userName){
             first.value = element.firstName
             last.value = element.lastName
             birth.value = element.birthDate
-            let b = document.createElement('button')
-            b.innerHTML = 'update'
+            let b = document.createElement('input')
+            b.value = 'Update'
+            b.type = 'button'
+            b.className = 'userButton'
             b.onclick = () => updatePost(userName)
 
             form.appendChild(user)
@@ -83,10 +95,10 @@ async function getUser(userName){
             form.appendChild(first)
             form.appendChild(last)
             form.appendChild(birth)
+            form.appendChild(b)
 
             let contain = document.querySelector('.container')
             contain.appendChild(form)
-            contain.appendChild(b)
 
 
         
@@ -99,6 +111,7 @@ export default function EditUser(){
         <>
         <Nav />
         <div className="container"></div>
+        <div className='errors'></div>
         </>
     )
 }

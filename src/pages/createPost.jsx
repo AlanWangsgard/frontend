@@ -3,11 +3,7 @@ export default function CreatePost(){
     
 
     function createPost(a){
-        // const $file = document.querySelector(".file")
-
-    // console.log($file)
-        // console.log(a)
-        // console.log(document.querySelector('.description').value)
+      if (document.querySelector('.postDescription').value || a != 'n/a'){
         fetch("http://localhost:3000/posts", {
         method: "POST",
         body: JSON.stringify({
@@ -21,6 +17,11 @@ export default function CreatePost(){
     })
     location.href="http://localhost:5173/"
     }
+  else{
+    let element = document.querySelector('.postContentError')
+     element.innerHTML = 'You must have some content for the post'
+     element.style.display = 'block'
+  }}
       
     // $file.addEventListener("change", (event) => {
         function convert(){
@@ -51,6 +52,9 @@ export default function CreatePost(){
         <input type="file" name="image" className="postFile"/>
         <input className="postButton" onClick={convert} type="button" value="Create Post"/>
         </form>
+        <div className='postErrorDiv'>
+        <p className="postContentError"></p>
+        </div>
         </>
     )
 }
