@@ -16,7 +16,7 @@ async function updatePost(postId){
          
         
     })
-    location.href ="http://localhost:5173/profile"
+    location.href ="http://localhost:5173/account"
 }
 
 

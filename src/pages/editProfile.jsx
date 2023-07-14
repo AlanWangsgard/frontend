@@ -31,8 +31,10 @@ async function updatePost(userName){
         let p = document.createElement('p')
         p.innerHTML = element.msg
         errorsDiv.append(p)
-    location.href ="http://localhost:5173/profile"
-    })}}}
+    })}}else{
+    location.href ="http://localhost:5173/account"
+    }
+    }
 
 
 async function getUser(userName){

@@ -29,6 +29,7 @@ async function createUser(){
     "Content-type": "application/json; charset=UTF-8"
   }
     })
+    if((await res).status == 400){
     let resjson = (await res).json()
     let errors = (await resjson)
     let errorsDiv = document.querySelector('.errors')
@@ -38,9 +39,12 @@ async function createUser(){
         let p = document.createElement('p')
         p.innerHTML = element.msg
         errorsDiv.append(p)
-    })}};
+    })}
+    }else{
+        location.href="http://localhost:5173/login"
+
+    }};
     
-    // location.href="http://localhost:5173/login"
     
 }
 
